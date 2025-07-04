@@ -3,11 +3,12 @@
   import type { Event } from '@/types';
   import { ref, onMounted } from 'vue';
   import axios from 'axios';
+import EventService from '@/services/EventService';
   const events = ref<Event[]>(null);
 
   onMounted(()=>{
-    axios
-      .get('https://my-json-server.typicode.com/kirana-prit/Lab02-new-repo/events')
+   EventService
+      .getEvents()
       .then((response)=>{
         events.value = response.data;
       })
