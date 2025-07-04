@@ -7,9 +7,9 @@
 
   onMounted(()=>{
     axios
-      .get('https://my-json-server.typicode.com/kirana-prit/Lab02-new-repo')
+      .get('https://my-json-server.typicode.com/kirana-prit/Lab02-new-repo/events')
       .then((response)=>{
-        console.log(response.data);
+        events.value = response.data;
       })
       .catch((error)=>{
         console.error('There was an error!', error);
