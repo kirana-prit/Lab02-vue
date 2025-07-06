@@ -1,15 +1,33 @@
+<script setup lang="ts">
+  import StudentCard from '@/components/StudentCard.vue';
+  import type { Student } from '@/types';
+  import { ref, onMounted } from 'vue';
+import StudentService from '@/services/StudentService';
+  const students = ref<Student[]>(null);
+
+  onMounted(()=>{
+   StudentService
+      .getStudents()
+      .then((response)=>{
+        students.value = response.data;
+      })
+      .catch((error)=>{
+        console.error('There was an error!', error);
+      });
+  });
+</script>
 <template>
-  <div class="about">
-    <h1>A site for events to better the world.</h1>
+  <div class="student">
+    <h1>Students information</h1>
+     <StudentCard v-for="student in students" :key="student.id" :student="student" />
   </div>
 </template>
 
-<style>
-/* @media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-} */
+<style scoped>
+.student {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 </style>
+
