@@ -3,10 +3,10 @@
   import  {type Event } from '@/types';
   import { ref, onMounted, computed, watchEffect,watch } from 'vue';
   import EventService from '@/services/EventService';
-  import { useRoute, useRouter } from 'vue-router';
+  import { useRoute } from 'vue-router';
   const events = ref<Event[] | null>(null);
   const route = useRoute();
-  const router = useRouter();
+
   const props = defineProps({
     page: {
       type: Number,
