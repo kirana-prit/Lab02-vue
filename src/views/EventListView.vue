@@ -36,7 +36,7 @@
         })
         .catch((error) => {
           console.error('There was an error!', error);
-        });
+        })
     });
   });
   watch(() => route.query, (newQuery) => {
