@@ -1,11 +1,17 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-//import HelloWorld from './components/EventCard.vue'
+import { useMessageStore } from '@/stores/message';
+import { storeToRefs } from 'pinia';
+const store = useMessageStore();
+const { messages } = storeToRefs(store);
 </script>
 
 <template>
   <div id="layout">
     <header>
+      <div id="flashMessage" v-if="messages">
+        <h4>{{ messages }}</h4>
+      </div>
       <div class="wrapper">
         <nav>
           <RouterLink to="/">Event</RouterLink>
@@ -13,7 +19,7 @@ import { RouterLink, RouterView } from 'vue-router'
         </nav>
       </div>
     </header>
-    
+
   <RouterView />
   </div>
 
@@ -49,5 +55,16 @@ h2{
 
 nav a.router-link-exact-active {
   color: #42b983;
+}
+
+@keyframes yellofade{
+  from{
+    background-color: yellow;
+  } to{
+    background-color: transparent;
+  }
+}
+#flashMessage {
+  animation: yellofade 3s ease-in-out;
 }
 </style>

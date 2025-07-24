@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { toRefs } from 'vue';
 import { useRouter } from 'vue-router';
+import {useMessageStore} from '@/stores/message';
 import {type Event} from '@/types';
+const store = useMessageStore();
 const props = defineProps<{
   event: Event
 }>();
@@ -9,9 +11,11 @@ const props = defineProps<{
 const { event } = toRefs(props);
 const router = useRouter();
 const register = () => {
-  // If the register API call successful
-  // Push back the event detail view
-  router.push({ name: 'event-detail-view' });
+  store.updateMessage('You are successfully registered for '+ event.value.title);
+  setTimeout(() => {
+    store.resetMessage()
+  }, 3000)
+  router.push({ name: 'event-detail-view', params: { id: event.value.id } });
 }
 </script>
 <template>
