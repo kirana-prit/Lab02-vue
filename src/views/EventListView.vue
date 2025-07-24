@@ -7,37 +7,16 @@
   const events = ref<Event[] | null>(null);
   const route = useRoute();
 
-  const props = defineProps({
-    page: {
-      type: Number,
-      required: true
-    },
-    size:{
-      type: Number,
-      default: 2
-    }
-  });
-  const size = ref(props.size);
-  const page = ref(props.page);
+  const page = ref(parseInt(route.query.page as string) || 1);
+  const size = ref(parseInt(route.query.size as string) || 2);
   const totalEvents = ref(0);
   const hasNextPage = computed(() => {
-    const totalPages = Math.ceil(totalEvents.value / 2);
+    const totalPages = Math.ceil(totalEvents.value / size.value);
     return page.value < totalPages;
   });
 
   onMounted(()=>{
-   watchEffect(() => {
-      events.value = null
-      EventService
-        .getEvents(size.value, page.value)
-        .then((response) => {
-          events.value = response.data;
-          totalEvents.value = response.headers['x-total-count']
-        })
-        .catch((error) => {
-          console.error('There was an error!', error);
-        })
-    });
+   loadEvents();
   });
   watch(() => route.query, (newQuery) => {
   page.value = parseInt(newQuery.page as string) || 1;
