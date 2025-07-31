@@ -18,7 +18,7 @@ import {type Event} from '@/types';
 
 <template>
   <RouterLink class="event-link" :to="{ name: 'event-detail-view', params: { id: event.id } }">
-    <div class="cursor-pointer border border-grey-600 p-4 w-64 mb-6 hover: scale-101 hover: shadow-sp">
+    <div class="cursor-pointer border border-grey-600 p-[20px] w-[250px] mb-[18px] hover: scale-101 hover: shadow-sp">
       <!-- cursor-pointer: change the mouse cursor to pointer
             border: add a border around the element
             border-grey-600: set the border color to a medium gray
