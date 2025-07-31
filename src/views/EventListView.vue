@@ -33,6 +33,7 @@ const loadEvents = () => {
 </script>
 
 <template>
+  
   <h1>Events For Good</h1>
   <!-- new element -->
   <div class="events">
