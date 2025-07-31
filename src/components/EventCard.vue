@@ -18,7 +18,15 @@ import {type Event} from '@/types';
 
 <template>
   <RouterLink class="event-link" :to="{ name: 'event-detail-view', params: { id: event.id } }">
-    <div class="event-card">
+    <div class="cursor-pointer border border-grey-600 p-4 w-64 mb-6 hover: scale-101 hover: shadow-sp">
+      <!-- cursor-pointer: change the mouse cursor to pointer
+            border: add a border around the element
+            border-grey-600: set the border color to a medium gray
+            p-4: add padding of 1rem (16px) on all sides
+            w-64: set the width to 16rem (256px)
+            mb-6: add a bottom margin of 1.5rem (24px)
+            hover: scale-101: slightly enlarge the element on hover
+            hover: shadow-sp: apply a small shadow effect on hover -->
       <h2>{{ event.title }}</h2>
       <span>@{{ event.time }} on {{ event.date }}</span>
     </div>
