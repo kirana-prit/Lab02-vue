@@ -18,7 +18,17 @@ import {type Event} from '@/types';
 
 <template>
   <RouterLink class="event-link" :to="{ name: 'event-detail-view', params: { id: event.id } }">
-    <div class="event-card">
+    <div class="cursor-pointer border border-gray-600 p-4 w-64 mb-6 hover:scale-101 hover:shadow-sp">
+      <!--
+        cursor-pointer: turn hand to pointer
+        border: add border
+        border-gray-600: gray border 600
+        p-4: padding 16px
+        w-64: width 256px
+        mb-6: margin bottom 24px
+        hover:scale-101 : scale up when hover
+        hover:shadow-sp : custom shadow
+      -->
       <h2>{{ event.title }}</h2>
       <span>@{{ event.time }} on {{ event.date }}</span>
     </div>
