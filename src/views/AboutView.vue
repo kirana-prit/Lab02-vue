@@ -3,7 +3,7 @@
   import type { Student } from '@/types';
   import { ref, onMounted } from 'vue';
 import StudentService from '@/services/StudentService';
-  const students = ref<Student[]>([]);
+  const students = ref<Student[]>(null);
 
   onMounted(()=>{
    StudentService
