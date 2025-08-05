@@ -28,3 +28,7 @@ export interface MessageState{
 export interface EventState {
     event: Event | null;
 }
+
+declare module '@vercel/analytics' {
+  export function inject(): void;
+}
